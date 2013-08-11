@@ -1,0 +1,23 @@
+{
+  "name": "object-pool",
+  "version": "0.0.0",
+  "description": "An object pool for recycling objects without as much boilerplate",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hughsk/object-pool.git"
+  },
+  "keywords": [
+    "object",
+    "pool",
+    "recycle",
+    "reuse"
+  ],
+  "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughskennedy.com/)",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "circular-list": "0.0.0"
+  }
+}
