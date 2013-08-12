@@ -20,7 +20,7 @@ Creates a new object pool, taking the following arguments:
 * `enable`: called on an object when it's added to the pool.
 * `disable`: called on an object when it's being removed from the pool.
 * `key`: this module stores a reference to each node on each object. Use
-  this option to chance the key it uses. Defaults to `__pool_node__`.
+  this option to change the key it uses. Defaults to `__pool_node__`.
 
 ### `pool.create()` ###
 
