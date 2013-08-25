@@ -62,15 +62,3 @@ Pool.prototype.clean = function() {
   this.reserve.first = null
   this.reserve.last = null
 }
-
-var pool = Pool(function init() {
-  return { active: false }
-}, {
-  key: '__pool_node__',
-  enable: function(entity) {
-    entity.active = true
-  },
-  disable: function(entity) {
-    entity.active = false
-  }
-})

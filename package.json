@@ -18,6 +18,9 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "circular-list": "0.0.0"
+    "circular-list": "0.0.1"
+  },
+  "devDependencies": {
+    "tape": "~1.0.4"
   }
 }
