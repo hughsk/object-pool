@@ -21,6 +21,16 @@ function Pool(opts) {
   this.disable = opts.disable || noop
   this.enable = opts.enable || noop
   this.init = opts.init || defaultInit
+  this.initPool(opts.initSize || 0);
+}
+
+Pool.prototype.initPool = function(initialSize) {
+  for(var i = 0; i < initialSize; i++) {
+    var object = this.init()
+    var node = new Node(object)
+    object[this.key] = node
+    this.reserve.append(object[this.key])
+  }
 }
 
 Pool.prototype.create = function() {
