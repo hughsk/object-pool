@@ -17,6 +17,7 @@ npm install object-pool
 Creates a new object pool, taking the following arguments:
 
 * `init`: a factory method which should return a freshly created object.
+* `initSize`: a number to specify the initial size of reserved objects in the pool
 * `enable`: called on an object when it's added to the pool.
 * `disable`: called on an object when it's being removed from the pool.
 * `key`: this module stores a reference to each node on each object. Use
