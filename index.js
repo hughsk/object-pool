@@ -42,6 +42,9 @@ Pool.prototype.initPool = function(initialSize) {
 
 Pool.prototype.create = function() {
   if (this.reserve.first === null) {
+    if (this.size === this.capacity) {
+      return null;
+    }
     var object = this.init()
     var node = new Node(object)
     object[this.key] = node
@@ -68,9 +71,13 @@ Pool.prototype.remove = function(entity) {
 
 Pool.prototype.ensureSize = function () {
   var diff = this.minimumSize - this.reserve.length;
-  if (diff > 0 && this.reserve.length <= this.capacity) {
-    this.initPool(1)
+  if (diff > 0 && this.size < this.capacity) {
+    this.initPool(1);
   }
+}
+
+Pool.prototype.size = function() {
+  return this.reserve.length + this.list.length 
 }
 
 Pool.prototype.each = function(cb) {
