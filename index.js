@@ -21,6 +21,13 @@ function Pool(opts) {
   this.disable = opts.disable || noop
   this.enable = opts.enable || noop
   this.init = opts.init || defaultInit
+  this.minimumSize = opts.minimumSize || 0;
+  this.capacity = opts.capacity || Number.MAX_VALUE;
+  
+  if(this.capacity < this.minimumSize) {
+    throw new Error('Cannot create pool if capacity is less than the initial size'); 
+  }
+  
   this.initPool(opts.initSize || 0);
 }
 
@@ -46,6 +53,7 @@ Pool.prototype.create = function() {
 
   this.enable(object)
   this.list.append(node)
+  this.ensureSize();
 
   return object
 }
@@ -54,7 +62,15 @@ Pool.prototype.remove = function(entity) {
   this.disable(entity)
   this.list.remove(entity[this.key])
   this.reserve.append(entity[this.key])
+  this.ensureSize();
   return this
+}
+
+Pool.prototype.ensureSize = function () {
+  var diff = this.minimumSize - this.reserve.length;
+  if (diff > 0 && this.reserve.length <= this.capacity) {
+    this.initPool(1)
+  }
 }
 
 Pool.prototype.each = function(cb) {
