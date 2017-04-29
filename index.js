@@ -77,10 +77,10 @@ var pool = Pool(function init() {
   return { active: false }
 }, {
   key: '__pool_node__',
-  enable: function(entity) {
+  enable(entity) {
     entity.active = true
   },
-  disable: function(entity) {
+  disable(entity) {
     entity.active = false
   }
 })
